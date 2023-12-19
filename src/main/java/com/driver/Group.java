@@ -12,4 +12,8 @@ public class Group {
     public String getName() {
         return name;
     }
+
+    public int getNumberOfParticipants() {
+        return numberOfParticipants;
+    }
 }

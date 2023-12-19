@@ -17,6 +17,10 @@ public class Message {
         return timestamp;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getContent() {
         return content;
     }
