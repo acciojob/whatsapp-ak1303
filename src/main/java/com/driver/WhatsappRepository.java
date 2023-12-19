@@ -59,7 +59,7 @@ public class WhatsappRepository {
         //If createGroup is called for these userLists in the same order, their group names would be "Group 1", "Evan", and "Group 2" respectively.
         int size = users.size();
         User groupAdmin = users.get(0);
-        String groupName = "";
+        String groupName;
         if(users.size()==2){
            groupName = users.get(1).getName();
         }else{
@@ -110,7 +110,7 @@ public class WhatsappRepository {
         if(!groupUserMap.containsKey(group))throw new Exception("Group does not exist");
 
         String admin = groupUserMap.get(group).get(0).getName();
-        if(!admin.equals(approver)) throw new Exception("Approver does not have rights");
+        if(!admin.equals(approver.getName())) throw new Exception("Approver does not have rights");
 
         List<User> userList = groupUserMap.get(group);
         boolean userExist = false;
@@ -185,7 +185,7 @@ public class WhatsappRepository {
         //This is a bonus problem and does not contains any marks
         // Find the Kth latest message between start and end (excluding start and end)
         // If the number of messages between given time is less than K, throw "K is greater than the number of messages" exception
-        String kthMsg="";
+
         List<String> li = new ArrayList<>();
         for(Message msg : messages){
             if(msg.getTimestamp().after(start) && msg.getTimestamp().before(end)){
