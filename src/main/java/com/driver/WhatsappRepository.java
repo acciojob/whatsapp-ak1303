@@ -194,6 +194,6 @@ public class WhatsappRepository {
         }
         if(K>li.size())throw new Exception("K is greater than the number of messages");
 
-        return li.get(K-1);
+        return li.get(li.size()-K);
     }
 }
