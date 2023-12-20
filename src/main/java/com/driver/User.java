@@ -8,11 +8,14 @@ public class User {
         this.name = name;
     }
 
+    public User() {
+    }
+
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
-    User(String name, String mobile){
+    public User(String name, String mobile){
         this.name=name;
         this.mobile=mobile;
     }
