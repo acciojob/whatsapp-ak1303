@@ -35,7 +35,7 @@ public class WhatsappRepository {
 
         for(String mobNo : userMobile){
             if(mobNo.equals(mobile)){
-                throw new Exception("User already exist");
+                throw new Exception("User already exists");
             }
         }
         //create user
@@ -66,6 +66,8 @@ public class WhatsappRepository {
         }
         Group newGroup = new Group(groupName,size);
         //map group to user list
+        List<Message> messages = new ArrayList<>();
+        groupMessageMap.put(newGroup, messages);
         groupUserMap.put(newGroup,users);
         adminMap.put(newGroup,groupAdmin);
         return newGroup;
@@ -106,7 +108,6 @@ public class WhatsappRepository {
         //Throw "User is not a participant" if the user is not a part of the group
         //Change the admin of the group to "user" and return "SUCCESS". Note that at one time there is only one admin and the admin rights are transferred from approver to user.
         if(!groupUserMap.containsKey(group))throw new Exception("Group does not exist");
-
         //String admin = groupUserMap.get(group).get(0).getName();
         String admin = adminMap.get(group).getName();
         if(!admin.equals(approver.getName())) throw new Exception("Approver does not have rights");
