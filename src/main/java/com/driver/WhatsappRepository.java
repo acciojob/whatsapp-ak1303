@@ -29,8 +29,6 @@ public class WhatsappRepository {
         this.messageId = 0;
     }
 
-    WhatsappRepository whatsappRepository = new WhatsappRepository();
-
     public String createUser(String name, String mobile) throws Exception {
         //If the mobile number exists in database, throw "User already exists" exception
         //Otherwise, create the user and return "SUCCESS"
@@ -109,7 +107,8 @@ public class WhatsappRepository {
         //Change the admin of the group to "user" and return "SUCCESS". Note that at one time there is only one admin and the admin rights are transferred from approver to user.
         if(!groupUserMap.containsKey(group))throw new Exception("Group does not exist");
 
-        String admin = groupUserMap.get(group).get(0).getName();
+        //String admin = groupUserMap.get(group).get(0).getName();
+        String admin = adminMap.get(group).getName();
         if(!admin.equals(approver.getName())) throw new Exception("Approver does not have rights");
 
         List<User> userList = groupUserMap.get(group);
